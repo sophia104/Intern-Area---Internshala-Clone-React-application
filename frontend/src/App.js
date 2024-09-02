@@ -22,14 +22,19 @@ import UserApplicatiom from './profile/UserApplicatiom';
 import UserapplicationDetail from "./Applications/DeatilApplicationUser";
 // import  LoginButton  from "./Components/auth/login"
 // import  LogoutButton  from "./Components/auth/logout"
-import Avatar from 'react-avatar';
-import ChatBot from 'react-chatbotify'
-import { useState } from 'react'
-import reactLogo from './Assets/react logo.png'
-import viteLogo from './Assets/vite logo.png'
+// import Avatar from 'react-avatar';
+// import ChatBot from 'react-chatbotify'
+// import { useState } from 'react'
+
+
 
 function App() {
-  const [count, setCount] = useState(0)
+//   const flow = {
+//     "start": {
+//       "message": "Hello world!"
+//     }
+//   }
+  // const [count, setCount] = useState(0)
   const user=useSelector(selectUser);
   const dispatch=useDispatch();
   useEffect(() => {
@@ -53,11 +58,11 @@ function App() {
     <div className="App">
 <Navbar/>
 
-<Avatar skypeId="sitebase" size="200" />
-<Avatar color={Avatar.getRandomColor('sitebase', ['red', 'green', 'blue'])} name="Aditi Arya" title="First Avator"/>
+{/* <Avatar skypeId="sitebase" size="200" />
+<Avatar color={Avatar.getRandomColor('sitebase', ['red', 'green', 'blue'])} name="Aditi Arya" title="First Avator"/> */}
 {/* <button className="btn3"><LoginButton/> </button>
-<button className="btn4"> <LogoutButton/> </button> */}
-<ChatBot/>
+// <button className="btn4"> <LogoutButton/> </button> */}
+ {/* <ChatBot flow={flow}/> */}
       {/* <div>
         <a href="https://vitejs.dev" target="_blank">
           <img src={viteLogo} className="logo" alt="Vite logo" />

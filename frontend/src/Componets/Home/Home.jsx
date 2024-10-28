@@ -7,9 +7,22 @@ import "./home.css"
 import Job from './Job'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
+
+
 function Home() {
 
-
+    const [posts, setPosts] = useState([]);
+    const [friends, setFriends] = useState(0); // Example friend count
+  
+    const handleNewPost = (newPost) => {
+      setPosts([...posts, newPost]);
+    };
+  
+    const canPost = () => {
+      if (friends === 0) return 1; // 1 post
+      if (friends >= 2 && friends <= 10) return 2; // 2 posts
+      return Infinity; // unlimited posts
+    };
     const [currentSlide,setCurrentSlide]=useState(0)
     const [selectedCategory,setSelectedCategory]= useState("Big Brands")
 const [internshipData,setInternshipData]=useState([])
@@ -179,8 +192,20 @@ View details <i class="bi bi-chevron-right"></i>
   )
 }
 
-export default Home
+export default Home;
 
+const PostList = ({ posts }) => (
+    <div>
+      {posts.map((post, index) => (
+        <div key={index}>
+          <h3>{post.title}</h3>
+          <img src={post.media} alt="Post" />
+          <p>{post.content}</p>
+        </div>
+      ))}
+    </div>
+  );
+  
 
 function sideScroll(element, direction,speed,distance,step){
     let scrollAmount=0;

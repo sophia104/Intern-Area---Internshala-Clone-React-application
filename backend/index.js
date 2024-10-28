@@ -26,3 +26,31 @@ connect();
 app.listen(port,()=>{
     console.log("server is running on port ")
 })
+
+app.post('/api/store-login', (req, res) => {
+    const { userId, browser, os, deviceType, ipAddress, loginTime } = req.body;
+  
+    // Save login details to database
+    db.collection('loginHistory').insertOne({
+      userId,
+      browser,
+      os,
+      deviceType,
+      ipAddress,
+      loginTime
+    });
+  
+    res.status(200).send('Login history stored');
+  });
+  
+  app.get('/api/get-login-history/:userId', (req, res) => {
+    const { userId } = req.params;
+  
+    db.collection('loginHistory')
+      .find({ userId })
+      .toArray((err, history) => {
+        if (err) throw err;
+        res.json(history);
+      });
+  });
+  
